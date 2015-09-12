@@ -73,6 +73,7 @@ public class Main extends JavaPlugin implements Listener{
 	public static String noperm = ChatColor.translateAlternateColorCodes('&', Messages.getMessage("general.noperm"));
 	public static String nocon = ChatColor.translateAlternateColorCodes('&', Messages.getMessage("general.onlyplayers"));
 	
+	public static boolean debug = false;
 	@SuppressWarnings("static-access")
 	@Override
 	public void onEnable() {
@@ -100,13 +101,22 @@ public class Main extends JavaPlugin implements Listener{
         this.getServer().getPluginManager().registerEvents(new TNTReg(), this);
         this.currentversion = this.getDescription().getVersion();
         System.out.println(this.getDescription().getVersion());
-        
+        TNTReg.init();
         
         
     }
 	
 
-	
+	public static void initConfig(){
+		Main.getInstance().getConfig().addDefault("debug", false);
+		Main.getInstance().getConfig().options().copyDefaults(true);
+		Main.getInstance().saveConfig();
+		if (Main.getInstance().getConfig().getBoolean("debug")){
+			debug = true;
+		} else {
+			debug = false;
+		}
+	}
 	@Override
 	public void onDisable() {
 
