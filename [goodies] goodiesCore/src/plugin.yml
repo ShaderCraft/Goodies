@@ -1,0 +1,25 @@
+name: goodies
+version: 0.5.3.9
+main: de.dunklesToast.nilober.goodies.Main
+autor: dunklesToast, TheNoim
+website: www.youtube.com/c/ShaderCraftDE
+commands:
+    kill:
+    hat:
+    op:
+    kick:
+    goodies:
+    get:
+    mute:
+    tpa:
+    tpaccept:
+    tpdeny:
+    head:
+    hologram:
+    waypoint:
+    helix:
+    favicon:
+    infobook:
+    bitly:
+    delete:
+    server:

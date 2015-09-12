@@ -1,0 +1,39 @@
+ # _____ _                 _     __   __             __              ____                 _               _                                     _ _          
+ #|_   _| |__   __ _ _ __ | | __ \ \ / /__  _   _   / _| ___  _ __  |  _ \ _   _ _ __ ___| |__   __ _ ___(_)_ __   __ _    __ _  ___   ___   __| (_) ___ ___ 
+ #  | | | '_ \ / _` | '_ \| |/ /  \ V / _ \| | | | | |_ / _ \| '__| | |_) | | | | '__/ __| '_ \ / _` / __| | '_ \ / _` |  / _` |/ _ \ / _ \ / _` | |/ _ \ __|
+ #  | | | | | | (_| | | | |   <    | | (_) | |_| | |  _| (_) | |    |  __/| |_| | | | (__| | | | (_| \__ \ | | | | (_| | | (_| | (_) | (_) | (_| | |  __\__ \
+ #  |_| |_| |_|\__,_|_| |_|_|\_\   |_|\___/ \__,_| |_|  \___/|_|    |_|    \__,_|_|  \___|_| |_|\__,_|___/_|_| |_|\__, |  \__, |\___/ \___/ \__,_|_|\___|___/
+ #                                                                                                                |___/   |___/                             
+
+
+#Welcome to the goodies Config
+#Configure the Plugin, like you want!
+#If you are ingame and write /goodies config, you can see the Config Settings!
+
+Config:
+
+#The Name of your Server (since 1.8 you can´t set it in the plugin.yml or we are to stupid to find the correct setting ;) )
+servername: My AWESOME Server!
+
+
+#Should goodies set the join-message? (Customize it in the Messages.yml)
+join-message: true
+
+#Should we kick all Players if you reload the Server?
+#Set the Message in the Messages.yml
+kick-on-rl: false
+
+#MySQL Service:
+use-sql: true
+hostname: host
+username: user
+password: pw
+database: db
+
+#Villagers
+#Should we give Villagers names? You can set them in the vnames.yml! Download an example on www.shadercraft.de/goodies/vnames.yml
+vnames-on: false
+
+#Stop EnderPearl Spam?
+stop-espam: true
+cooldown: 5

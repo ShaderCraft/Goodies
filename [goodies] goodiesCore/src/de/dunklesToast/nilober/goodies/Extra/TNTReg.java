@@ -1,0 +1,100 @@
+package de.dunklesToast.nilober.goodies.Extra;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Effect;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.inventory.ItemStack;
+
+import de.dunklesToast.nilober.goodies.Main;
+
+public class TNTReg implements Listener{
+	
+	public HashMap<Entity, Integer> task = new HashMap<Entity, Integer>();
+	@SuppressWarnings("deprecation")
+	@EventHandler
+	public void onExplode(EntityExplodeEvent e){
+		Entity en = e.getEntity();
+		
+		List<Block> blocks = new ArrayList<Block>();
+		blocks.addAll(e.blockList());
+		
+		List<Location> locs = new ArrayList<Location>();
+		List<Material> mat = new ArrayList<Material>();
+		List<Byte> bt = new ArrayList<Byte>();
+	
+		Collections.sort(blocks, new Comparator<Block>() {
+
+            @Override
+            public int compare(Block b1, Block b2) {
+                int y1 = b1.getY();
+                int y2 = b2.getY();
+                if(y1 < y2) {
+                    return -1;
+                } else if(y1 == y2) {
+                    return 0;
+                }
+                return 1;
+            }
+           
+        });
+		for (int i = 0; i < blocks.size(); i++){
+			locs.add(blocks.get(i).getLocation());
+		}
+		e.blockList().clear();
+		for (int i2 = 0; i2 < locs.size(); i2++){
+			mat.add(locs.get(i2).getBlock().getType());
+			bt.add(locs.get(i2).getBlock().getData());
+		}
+		for (int i4 = 0; i4 < locs.size(); i4++){
+			locs.get(i4).getBlock().breakNaturally(new ItemStack(mat.get(i4)));
+		}
+		
+		 this.task.put(en, Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, new Runnable(){
+			int i3;
+			@Override
+			public void run() {
+				if (i3 < locs.size()){
+					
+					locs.get(i3).getBlock().setType(mat.get(i3));
+					locs.get(i3).getBlock().setData(bt.get(i3));
+					locs.get(i3).getBlock().getLocation().getWorld().playEffect(locs.get(i3), Effect.ENDER_SIGNAL, 1);
+					locs.get(i3).getBlock().getLocation().getWorld().playSound(locs.get(i3), Sound.ENDERMAN_TELEPORT,(float) 1, (float) 1);
+					i3++;
+				} else {
+					
+					for (int i33 = 0; i33 < locs.size(); i33++){
+						locs.get(i33).getBlock().setType(mat.get(i33));
+						locs.get(i33).getBlock().setData(bt.get(i33));
+					}
+					locs.clear();
+		            mat.clear();
+		            bt.clear();
+		            Bukkit.getScheduler().cancelTask(task.get(en));
+		            task.remove(en);
+		            en.getLocation().getBlock().getWorld().playEffect(en.getLocation().getBlock().getLocation(), Effect.ENDER_SIGNAL, 1);
+					
+				}
+				
+			}
+			
+		}, 3*20L, 1L));
+		
+		
+		
+	}
+
+}
