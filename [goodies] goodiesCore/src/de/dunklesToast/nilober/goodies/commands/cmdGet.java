@@ -190,10 +190,19 @@ public class cmdGet implements CommandExecutor{
 						String url = "http://www.mcping.net/api/" + args[1] + "/favicon.png";
 				        String filename = args[1].toLowerCase();
 				        s.sendMessage("§d>>> §eDownloading Favicon from §6" + args[1]);
-				        s.sendMessage("§d>>> §eIF you want to use this favicon, write §c/setfavicon §oSERVER_IP");
-				        
 				        DownloadFavicon.downloadFavicon(url, filename, s);
 						
+				        
+				        Bukkit.getScheduler().runTaskLater(main, new Runnable() {
+							
+							@Override
+							public void run() {
+								s.sendMessage("§d>>> §eIf you want to use this favicon, write §c/set favicon §oSERVER_IP");
+						        
+							}
+						}, 20);
+				        
+				        
 					} catch (MalformedURLException e) {
 						e.printStackTrace();
 					}

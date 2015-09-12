@@ -30,6 +30,7 @@ import de.dunklesToast.nilober.goodies.commands.cmdKill;
 import de.dunklesToast.nilober.goodies.commands.cmdMute;
 import de.dunklesToast.nilober.goodies.commands.cmdOp;
 import de.dunklesToast.nilober.goodies.commands.cmdServer;
+import de.dunklesToast.nilober.goodies.commands.cmdSet;
 import de.dunklesToast.nilober.goodies.commands.cmdTpa;
 import de.dunklesToast.nilober.goodies.commands.cmdTpaccept;
 import de.dunklesToast.nilober.goodies.commands.cmdTpdeny;
@@ -159,6 +160,7 @@ public class Main extends JavaPlugin implements Listener{
         getCommand("bitly").setExecutor(new cmdBitLy(this));
         getCommand("delete").setExecutor(new cmdDelete(this));
         getCommand("server").setExecutor(new cmdServer(this));
+        getCommand("set").setExecutor(new cmdSet(this));
         
 	}
 	

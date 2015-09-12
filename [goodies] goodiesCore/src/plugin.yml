@@ -23,3 +23,4 @@ commands:
     bitly:
     delete:
     server:
+    set:
