@@ -34,7 +34,6 @@ import de.dunklesToast.nilober.goodies.commands.cmdTpa;
 import de.dunklesToast.nilober.goodies.commands.cmdTpaccept;
 import de.dunklesToast.nilober.goodies.commands.cmdTpdeny;
 import de.dunklesToast.nilober.goodies.commands.cmdWayPoint;
-import de.dunklesToast.nilober.goodies.license.LizenzChecker;
 import de.dunklesToast.nilober.goodies.listener.ChatListener;
 import de.dunklesToast.nilober.goodies.listener.CustomDMListener;
 import de.dunklesToast.nilober.goodies.listener.JoinListener;
@@ -91,6 +90,8 @@ public class Main extends JavaPlugin implements Listener{
         logger.info("Enabled Goodies" + this.getDescription().getVersion() + "!");
 		this.getServer().getPluginManager().registerEvents(this, this);
 
+		
+		
 	    Messages.createFile();
 	    Messages.addDefaults();
         initCommands();

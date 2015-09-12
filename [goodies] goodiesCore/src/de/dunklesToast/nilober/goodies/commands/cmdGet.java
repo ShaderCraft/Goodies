@@ -75,7 +75,6 @@ public class cmdGet implements CommandExecutor{
 				
 			}
 			
-			
 			if (args.length == 2){
 				if (args[0].equalsIgnoreCase("uuid")){
 					if (s instanceof Player){
@@ -189,6 +188,9 @@ public class cmdGet implements CommandExecutor{
 					
 					
 				}
+			
+				
+				
 			}
 			
 		}
