@@ -112,10 +112,12 @@ public class Main extends JavaPlugin implements Listener{
 	public void onDisable() {
 
 		if(this.getConfig().getBoolean("kick-on-rl") == true){
-			for(Player pp : Bukkit.getOnlinePlayers()){
-				pp.kickPlayer(ChatColor.translateAlternateColorCodes('&', Messages.getMessage("kick.onrl")));
-				
-			}
+			
+				for(Player pp : Bukkit.getOnlinePlayers()){
+					if(!pp.isOp()){
+					pp.kickPlayer(ChatColor.translateAlternateColorCodes('&', Messages.getMessage("kick.onrl")));
+					}
+				}
 		}
 		
 	}
