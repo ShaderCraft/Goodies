@@ -23,6 +23,7 @@ public interface DownloadFavicon {
 		try {
 			URL ur = new URL(url);
 			File finishedfile = new File(Main.getPlugin(Main.class).getDataFolder() + "/favicons/" + fullname);
+			
 			FileUtils.copyURLToFile(ur,finishedfile);
 		} catch (IOException e) {
 			e.printStackTrace();
