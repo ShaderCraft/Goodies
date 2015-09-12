@@ -3,6 +3,7 @@ package de.dunklesToast.nilober.goodies.commands;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -16,6 +17,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import de.dunklesToast.nilober.goodies.Main;
+import de.dunklesToast.nilober.goodies.Utilitys.DownloadFavicon;
+import de.dunklesToast.nilober.goodies.Utilitys.ErrorLED;
 import de.dunklesToast.nilober.goodies.Utilitys.UUIDFetcher;
 import de.dunklesToast.nilober.goodies.Utilitys.Update;
 
@@ -180,20 +183,38 @@ public class cmdGet implements CommandExecutor{
 				            return true;
 				        }
 					}
-					
-					
-					
-					
-					
-					
-					
 				}
+				if(args[0].equalsIgnoreCase("favicon")){
+					try {
+						//final URL url = new URL("");
+						String url = "http://www.mcping.net/api/" + args[1] + "/favicon.png";
+				        String filename = args[1].toLowerCase();
+				        s.sendMessage("§d>>> §eDownloading Favicon from §6" + args[1]);
+				        s.sendMessage("§d>>> §eIF you want to use this favicon, write §c/setfavicon §oSERVER_IP");
+				        
+				        DownloadFavicon.downloadFavicon(url, filename, s);
+						
+					} catch (MalformedURLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+					
+			}}
+				
+				
+	
+					
+			
+					
+
+				
 			
 				
 				
-			}
 			
-		}
+			
+		
 		return true;
 	}
 

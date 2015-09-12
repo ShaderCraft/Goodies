@@ -35,7 +35,6 @@ public class cmdFavicon implements CommandExecutor{
 		        String filename = args[0].toLowerCase();
 		        cs.sendMessage(">>> Downloading Favicon from " + args[0]);
 		        
-		        ErrorLED.openStream();
 		        
 		        DownloadFavicon.downloadFavicon(url, filename,  cs);
 				
