@@ -121,7 +121,7 @@ public class Main extends JavaPlugin implements Listener{
 				}
 		}
 		
-	}
+	} 
 	
 
 	public void registerEvents() {
