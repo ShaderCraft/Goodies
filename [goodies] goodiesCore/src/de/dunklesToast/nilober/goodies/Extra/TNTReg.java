@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -204,18 +205,27 @@ public class TNTReg implements Listener{
 				if (EntityType.valueOf(entitys.get(i)) != null){
 					//en2.add(EntityType.fromName(entitys.get(i).replaceAll("&", "_")));
 					en2.add(EntityType.valueOf(entitys.get(i)));
-					System.out.println("+");
-					
+					if (Main.getInstance().debug){
+						System.out.println("+");
+					}
 				} else {
 					System.out.println(entitys.get(i) + " is not a type of entitys.");
 				}
 			}
-			System.out.println("X");
+			if (Main.getInstance().debug){
+				System.out.println("X");
+			}
 		}
 		
-		System.out.println(Main.getInstance().getConfig().getStringList("entitys"));
-		System.out.println(all);
-		System.out.println(en2);
+		
+		if (Main.getInstance().debug){
+			System.out.println(Main.getInstance().getConfig().getStringList("entitys"));
+			System.out.println(all);
+			System.out.println(en2);
+		}
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&c>> &eThis Entitys were added to the Explosion List:"));
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&c>> &e" + en2));
+		
 	}
 
 }
